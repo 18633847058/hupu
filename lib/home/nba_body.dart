@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hupu/app/request.dart';
 import 'package:hupu/home/competition.dart';
 import 'package:hupu/home/nba_schedule.dart';
-import 'package:hupu/home/schedule_item.dart';
 import 'package:hupu/utility/toast.dart';
 
 class NbaBody extends StatefulWidget {
