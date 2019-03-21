@@ -30,6 +30,7 @@ dependencies:
   intl: ^0.15.7
   device_info: ^0.4.0
   video_player: ^0.9.0
+  flutter_svg: ^0.12.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,7 @@ flutter:
   assets:
   - images/
   - mock/
+  - logo/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

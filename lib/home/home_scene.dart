@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hupu/app/hupu_color.dart';
+import 'package:hupu/home/nba_body.dart';
 import 'package:hupu/home/search_input.dart';
 
 class HomeScene extends StatefulWidget {
@@ -52,7 +53,7 @@ class HomeSceneState extends State<HomeScene>
         children: tabs.map((e) {
           return Container(
             alignment: Alignment.center,
-            child: Text(e),
+            child: NbaBody(),
           );
         }).toList(),
       ),
