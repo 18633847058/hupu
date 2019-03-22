@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hupu/app/request.dart';
 import 'package:hupu/home/nba_schedule.dart';
 import 'package:hupu/home/nba_video.dart';
-import 'package:hupu/home/video_item.dart';
+import 'package:hupu/me/me_cell.dart';
 import 'package:hupu/model/competition.dart';
 import 'package:hupu/model/video.dart';
 import 'package:hupu/utility/toast.dart';
+import 'package:hupu/me/me_cell.dart';
 
 class NbaBody extends StatefulWidget {
   @override
@@ -55,13 +56,47 @@ class NbaBodyState extends State<NbaBody> {
               ? NbaSchedule(competitions: competitions)
               : new Container(),
           NbaVideo(videos: videos),
+          buildButtons(),
         ],
       ),
     );
   }
 
-
   Widget buildButtons() {
-    return 
+    return Container(
+      height: 70,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0)),
+          boxShadow: [BoxShadow()]),
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Positioned(
+              left: 50,
+              child: MeCell(
+                  title: '赛程',
+                  iconName: 'images/icon_event.png',
+                  onPressed: () {
+                    print('saicheng');
+                  })),
+          MeCell(
+              title: '排行',
+              iconName: 'images/icon_rank.png',
+              onPressed: () {
+                print('panghang');
+              }),
+          Positioned(
+              right: 50,
+              child: MeCell(
+                  title: '流言',
+                  iconName: 'images/icon_talk.png',
+                  onPressed: () {
+                    print('liuyan');
+                  })),
+        ],
+      ),
+    );
   }
 }

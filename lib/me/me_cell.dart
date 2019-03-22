@@ -12,7 +12,6 @@ class MeCell extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _MeCellState();
   }
-  
 }
 
 class _MeCellState extends State<MeCell> {
@@ -26,16 +25,15 @@ class _MeCellState extends State<MeCell> {
 
   void _handleTapUp(TapUpDetails details) {
     setState(() {
-      _highlight = false; 
+      _highlight = false;
     });
   }
 
   void _handleTapCancel() {
     setState(() {
-      _highlight = false; 
+      _highlight = false;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +43,11 @@ class _MeCellState extends State<MeCell> {
       onTapDown: _handleTapDown,
       onTapUp: _handleTapUp,
       child: Container(
-        color: _highlight ? HupuColor.gray :HupuColor.white,
-        padding: EdgeInsets.symmetric(vertical: 8),
+        width: 60,
+        color: _highlight ? HupuColor.gray : HupuColor.white,
+        padding: EdgeInsets.symmetric(vertical: 4),
         child: Column(
-          mainAxisAlignment:MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
               this.widget.iconName,
@@ -57,11 +56,10 @@ class _MeCellState extends State<MeCell> {
               fit: BoxFit.fill,
             ),
             // SizedBox(height: 10),
-            Text(this.widget.title, style:TextStyle(fontSize: 16))
+            Text(this.widget.title, style: TextStyle(fontSize: 14))
           ],
         ),
       ),
     );
   }
-  
 }

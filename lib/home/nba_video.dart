@@ -20,7 +20,7 @@ class NbaVideoState extends State<NbaVideo> {
       height: 150,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: EdgeInsets.fromLTRB(8, 4, 8, 8),
         children: widget.videos.map((e) => VideoItem(e)).toList(),
       ),
     );
