@@ -6,7 +6,6 @@ import 'package:hupu/me/me_cell.dart';
 import 'package:hupu/model/competition.dart';
 import 'package:hupu/model/video.dart';
 import 'package:hupu/utility/toast.dart';
-import 'package:hupu/me/me_cell.dart';
 
 class NbaBody extends StatefulWidget {
   @override
