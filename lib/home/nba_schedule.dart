@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hupu/home/competition.dart';
 import 'package:hupu/home/schedule_item.dart';
+import 'package:hupu/model/competition.dart';
 
 class NbaSchedule extends StatefulWidget {
   final List<Competition> competitions;
@@ -17,10 +17,10 @@ class NbaScheduleState extends State<NbaSchedule> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 130,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.fromLTRB(8, 8, 8, 4),
         children: widget.competitions.map((e) => ScheduleItem(e)).toList(),
       ),
     );

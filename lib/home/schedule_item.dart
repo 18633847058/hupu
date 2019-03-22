@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hupu/home/competition.dart';
+import 'package:hupu/model/competition.dart';
 
 class ScheduleItem extends StatelessWidget {
   final Competition competition;
@@ -12,7 +12,7 @@ class ScheduleItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4),
       child: Container(
-        width: 170,
+        width: 160,
         height: 130,
         decoration: BoxDecoration(
             color: Colors.white,
@@ -25,7 +25,7 @@ class ScheduleItem extends StatelessWidget {
               Row(
                 children: <Widget>[
                   SvgPicture.asset('logo/' + competition.hostTeamLogo,
-                      width: 50, height: 50),
+                      width: 40, height: 40),
                   SizedBox(width: 5),
                   Text(
                     competition.hostTeam,
@@ -41,7 +41,7 @@ class ScheduleItem extends StatelessWidget {
               Row(
                 children: <Widget>[
                   SvgPicture.asset('logo/' + competition.guestTeamLogo,
-                      width: 50, height: 50),
+                      width: 40, height: 40),
                   SizedBox(width: 5),
                   Text(
                     competition.guestTeam,
@@ -54,6 +54,7 @@ class ScheduleItem extends StatelessWidget {
                   )
                 ],
               ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
