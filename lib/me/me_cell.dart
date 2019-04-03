@@ -15,49 +15,30 @@ class MeCell extends StatefulWidget {
 }
 
 class _MeCellState extends State<MeCell> {
-  bool _highlight = false;
-
-  void _handleTapDown(TapDownDetails details) {
-    setState(() {
-      _highlight = true;
-    });
-  }
-
-  void _handleTapUp(TapUpDetails details) {
-    setState(() {
-      _highlight = false;
-    });
-  }
-
-  void _handleTapCancel() {
-    setState(() {
-      _highlight = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: this.widget.onPressed,
-      onTapCancel: _handleTapCancel,
-      onTapDown: _handleTapDown,
-      onTapUp: _handleTapUp,
-      child: Container(
-        width: 60,
-        color: _highlight ? HupuColor.gray : HupuColor.white,
-        padding: EdgeInsets.symmetric(vertical: 4),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              this.widget.iconName,
-              height: 40,
-              width: 40,
-              fit: BoxFit.fill,
-            ),
-            // SizedBox(height: 10),
-            Text(this.widget.title, style: TextStyle(fontSize: 14))
-          ],
+    return Material(
+      color: HupuColor.white,
+      child: InkWell(
+        onTap: this.widget.onPressed,
+        highlightColor: HupuColor.gray,
+        child: Container(
+          width: 60,
+          // color: HupuColor.white,
+          padding: EdgeInsets.symmetric(vertical: 4),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                this.widget.iconName,
+                height: 40,
+                width: 40,
+                fit: BoxFit.fill,
+              ),
+              // SizedBox(height: 10),
+              Text(this.widget.title, style: TextStyle(fontSize: 14))
+            ],
+          ),
         ),
       ),
     );

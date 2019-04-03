@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hupu/app/request.dart';
+import 'package:hupu/home/nba_article.dart';
 import 'package:hupu/home/nba_schedule.dart';
 import 'package:hupu/home/nba_video.dart';
 import 'package:hupu/me/me_cell.dart';
+import 'package:hupu/model/article.dart';
 import 'package:hupu/model/competition.dart';
 import 'package:hupu/model/video.dart';
 import 'package:hupu/utility/toast.dart';
@@ -17,15 +19,23 @@ class NbaBody extends StatefulWidget {
 class NbaBodyState extends State<NbaBody> {
   List<Competition> competitions = new List();
   List<Video> videos = new List();
+  List<Article> articles = new List();
 
   getCompetition() async {
     try {
       //请求登录
       var response = await Request.post(action: 'competition', params: {});
       var videoResponse = await Request.post(action: 'video', params: {});
+      var articleResponse = await Request.post(action: 'article', params: {});
       setState(() {
         Competition competition = Competition.fromJson(response);
         Video video = Video.formJson(videoResponse);
+        Article article = Article.fromJson(articleResponse);
+        articles.add(article);
+        articles.add(article);
+        articles.add(article);
+        articles.add(article);
+
         competitions.add(competition);
         competitions.add(competition);
         competitions.add(competition);
@@ -56,6 +66,7 @@ class NbaBodyState extends State<NbaBody> {
               : new Container(),
           NbaVideo(videos: videos),
           buildButtons(),
+          NbaArticle(articles: articles)
         ],
       ),
     );
