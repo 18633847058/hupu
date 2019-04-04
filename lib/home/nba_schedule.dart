@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hupu/app/app_navigator.dart';
 import 'package:hupu/home/schedule_item.dart';
 import 'package:hupu/model/competition.dart';
 
@@ -21,7 +22,7 @@ class NbaScheduleState extends State<NbaSchedule> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.fromLTRB(8, 8, 8, 4),
-        children: widget.competitions.map((e) => ScheduleItem(e)).toList(),
+        children: widget.competitions.map((e) => ScheduleItem(e,(){ AppNavigator.pushCompetition(context, e)})).toList(),
       ),
     );
   }

@@ -16,7 +16,7 @@
 
             "type": 0,
             "hostteam": "凯尔特人",
-            "hostteamlogo": "CLE_logo.svg",
+            "hostteamlogo": "BOS_logo.svg",
             "hostgoal": 100,
             "guestteam": "热火",
             "guestteamlogo": "MIA_logo.svg",
@@ -27,10 +27,10 @@
 
             "type": 0,
             "hostteam": "76人",
-            "hostteamlogo": "HOU_logo.svg",
+            "hostteamlogo": "PHI_logo.svg",
             "hostgoal": 113,
             "guestteam": "老鹰",
-            "guestteamlogo": "LAL_logo.svg",
+            "guestteamlogo": "ATL_logo.svg",
             "guestgoal": 123,
             "state": 1
         },
@@ -41,7 +41,7 @@
             "hostteamlogo": "HOU_logo.svg",
             "hostgoal": 0,
             "guestteam": "鹈鹕",
-            "guestteamlogo": "LAL_logo.svg",
+            "guestteamlogo": "NOP_logo.svg",
             "guestgoal": 0,
             "state": 0
         }
