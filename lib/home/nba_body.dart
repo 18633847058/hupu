@@ -20,30 +20,23 @@ class NbaBodyState extends State<NbaBody> {
   List<Competition> competitions = new List();
   List<Video> videos = new List();
   List<Article> articles = new List();
+  bool down = false;
 
-  getCompetition() async {
+  ScrollController _scrollController = new ScrollController();
+
+  getData() async {
     try {
-      //请求登录
-      var response = await Request.post(action: 'competition', params: {});
-      var videoResponse = await Request.post(action: 'video', params: {});
-      var articleResponse = await Request.post(action: 'article', params: {});
+      List competitionResponse =
+          await Request.post(action: 'competition', params: {});
+      List videoResponse = await Request.post(action: 'video', params: {});
+      List articleResponse = await Request.post(action: 'article', params: {});
       setState(() {
-        Competition competition = Competition.fromJson(response);
-        Video video = Video.formJson(videoResponse);
-        Article article = Article.fromJson(articleResponse);
-        articles.add(article);
-        articles.add(article);
-        articles.add(article);
-        articles.add(article);
-
-        competitions.add(competition);
-        competitions.add(competition);
-        competitions.add(competition);
-        competitions.add(competition);
-        videos.add(video);
-        videos.add(video);
-        videos.add(video);
-        videos.add(video);
+        articles.addAll(
+            articleResponse.map((e) => new Article.fromJson(e)).toList());
+        competitions.addAll(competitionResponse
+            .map((e) => new Competition.fromJson(e))
+            .toList());
+        videos.addAll(videoResponse.map((e) => new Video.fromJson(e)).toList());
       });
     } catch (e) {
       Toast.show(e.toString());
@@ -53,20 +46,56 @@ class NbaBodyState extends State<NbaBody> {
   @override
   void initState() {
     super.initState();
-    getCompetition();
+    getData();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _getMore();
+      }
+    });
+  }
+
+  _getMore() async {
+    try {
+      if (articles.length < 20) {
+        List articleResponse = await Request.post(action: 'more', params: {});
+        setState(() {
+          articles.addAll(
+              articleResponse.map((e) => new Article.fromJson(e)).toList());
+        });
+      } else {
+        setState(() {
+          down = true;
+        });
+      }
+    } catch (e) {
+      Toast.show(e.toString());
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
+        controller: _scrollController,
         children: <Widget>[
           competitions != null
               ? NbaSchedule(competitions: competitions)
               : new Container(),
           NbaVideo(videos: videos),
           buildButtons(),
-          NbaArticle(articles: articles)
+          NbaArticle(articles: articles),
+          down
+              ? Center(
+                  child: Text("只有这么多了"),
+                )
+              : new Container()
         ],
       ),
     );

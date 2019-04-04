@@ -3,7 +3,7 @@ class Video {
   String imageUrl;
   String videoUrl;
 
-  Video.formJson(Map json) {
+  Video.fromJson(Map json) {
     title = json['title'];
     imageUrl = json['imageUrl'];
     videoUrl = json['videoUrl'];

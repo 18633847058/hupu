@@ -44,8 +44,8 @@ class VideoItem extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 4,
-                  child:
-                      Text(video.title, style: TextStyle(color: Colors.white)),
+                  child: Text(video.title,
+                      style: TextStyle(color: Colors.white, fontSize: 12)),
                 )
               ],
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hupu/app/hupu_color.dart';
 import 'package:hupu/model/competition.dart';
 
 class ScheduleItem extends StatelessWidget {
@@ -27,11 +28,16 @@ class ScheduleItem extends StatelessWidget {
                   SvgPicture.asset('logo/' + competition.hostTeamLogo,
                       width: 40, height: 40),
                   SizedBox(width: 5),
-                  Text(
-                    competition.hostTeam,
-                    style: TextStyle(color: Colors.black),
+                  Container(
+                    width: 40,
+                    child: Text(
+                      competition.hostTeam,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
-                  SizedBox(width: 40),
+                  SizedBox(width: 30),
                   Text(
                     competition.hostGoal.toString(),
                     style: TextStyle(color: Colors.black),
@@ -43,11 +49,16 @@ class ScheduleItem extends StatelessWidget {
                   SvgPicture.asset('logo/' + competition.guestTeamLogo,
                       width: 40, height: 40),
                   SizedBox(width: 5),
-                  Text(
-                    competition.guestTeam,
-                    style: TextStyle(color: Colors.black),
+                  Container(
+                    width: 40,
+                    child: Text(
+                      competition.guestTeam,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
-                  SizedBox(width: 40),
+                  SizedBox(width: 30),
                   Text(
                     competition.guestGoal.toString(),
                     style: TextStyle(color: Colors.black),
@@ -65,7 +76,8 @@ class ScheduleItem extends StatelessWidget {
                   SizedBox(width: 50),
                   Text(
                     getState(competition.state),
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(
+                        fontSize: 10, color: getColor(competition.state)),
                   )
                 ],
               )
@@ -86,6 +98,16 @@ class ScheduleItem extends StatelessWidget {
         return '已结束';
       default:
         return '未开始';
+    }
+  }
+
+  Color getColor(int state) {
+    switch (state) {
+      case 0:
+      case 2:
+        return HupuColor.gray;
+      default:
+        return HupuColor.primary;
     }
   }
 }
