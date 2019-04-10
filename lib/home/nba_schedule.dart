@@ -22,7 +22,11 @@ class NbaScheduleState extends State<NbaSchedule> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.fromLTRB(8, 8, 8, 4),
-        children: widget.competitions.map((e) => ScheduleItem(e,(){ AppNavigator.pushCompetition(context, e)})).toList(),
+        children: widget.competitions
+            .map((e) => ScheduleItem(e, () {
+                  AppNavigator.pushCompetition(context, e);
+                }))
+            .toList(),
       ),
     );
   }
