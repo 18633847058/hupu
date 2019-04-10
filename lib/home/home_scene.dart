@@ -25,32 +25,29 @@ class HomeSceneState extends State<HomeScene>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Container(
-            child: Row(
-              children: <Widget>[
-                Image.asset(
-                  'images/icon_logo.png',
-                  width: 100,
-                  fit: BoxFit.fitWidth,
-                ),
-                SizedBox(width: 8),
-                Expanded(child: buildSearchInput(context))
-              ],
-            ),
-          ),
-          bottom: Row(
+        title: Container(
+          child: Row(
             children: <Widget>[
-              TabBar(
-                indicatorColor: HupuColor.primary,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicatorWeight: 2,
-                labelStyle: new TextStyle(fontSize: 16.0),
-                unselectedLabelStyle: new TextStyle(fontSize: 14.0),
-                tabs: tabs.map((e) => Tab(text: e)).toList(),
-                controller: _tabController,
-              )
+              Image.asset(
+                'images/icon_logo.png',
+                width: 100,
+                fit: BoxFit.fitWidth,
+              ),
+              SizedBox(width: 8),
+              Expanded(child: buildSearchInput(context))
             ],
-          )),
+          ),
+        ),
+        bottom: TabBar(
+          indicatorColor: HupuColor.primary,
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorWeight: 2,
+          labelStyle: new TextStyle(fontSize: 16.0),
+          unselectedLabelStyle: new TextStyle(fontSize: 14.0),
+          tabs: tabs.map((e) => Tab(text: e)).toList(),
+          controller: _tabController,
+        ),
+      ),
       body: TabBarView(
         controller: _tabController,
         children: tabs.map((e) {
